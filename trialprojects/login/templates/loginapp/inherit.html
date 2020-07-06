@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <link rel="stylesheet" href=" ">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'homeUrl' %}">HOME</a></li>       <!--  path('',views.homeView,name="homeUrl"),-->
+             <li><a href="{% url 'registerUrl' %}">REGISTER</a></li>
+             <li><a href="{% url 'loginUrl' %}">LOGIN</a></li>
+             
+             {% if user.is_authenticated %}
+                 <li><a href="{% url 'logoutUrl' %}">LOGOUT</a></li>         <!--this url  is in main url !!! -->
+             {% else %}
+            
+             <li><a href="{% url 'loginUrl' %}">LOGIN</a></li> 
+                 {% endif %}
+                 
+        </ul>
+    </nav>
+
+    {% block blockname %}                <!--here other pages content goees here-->
+      
+    {% endblock blockname %}                <!--here other pages content goees here-->
+    
+</body>
+</html>

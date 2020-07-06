@@ -1,0 +1,8 @@
+{% extends "cbvapp/base.html" %}
+{% block blockname %}
+    
+    {% for student in student_list  %}
+      <h3>{{ student }}</h3>
+    {% endfor %}
+
+{% endblock %}

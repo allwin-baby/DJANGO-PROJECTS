@@ -1,0 +1,14 @@
+{% extends "cbvapp/base.html" %}
+{% block blockname %}
+    
+    <h1>LIST OF ALL SCHOLLS</h1>
+    <h2>Each school is href ed to its id ,Each object has id in
+    django.admin/school so school.id  takes as to urls.py reg expression 
+    which call schoolDeatail.as._view()</h2>
+    <ol>
+        {% for school in school_list %}
+        <h2><li><a href="{{school.id}}">{{ school.name }}</a></li></h2 >
+        <p><a href="{% url 'cbvapp:update' pk=school.id %}" >UPDATE</a></p> 
+        {% endfor %}
+    </ol>
+{% endblock %}

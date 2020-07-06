@@ -1,0 +1,26 @@
+Serializers make data to json ie endpoint of Serializers is always json!!
+
+python manage.py Shell 
+--------------------------------
+>>>from api.models import Article
+>>>from api.serializers import Article 
+>>>from rest_framework.renderers import JSONRenderer 
+>>>from rest_framework.parsers import JSONParser  
+>>>a = Article(title = 'Django',author = 'allwin', email= 'email') 
+>>>a.save()
+>>> b = Article(title = 'Electon',author = 'allwin', email= 'email') 
+>>> b.save()
+>>>serializer = Article(a)  
+>>>from api.serializers import ArticleSerializers
+>>>serializer = ArticleSerializers(a)
+>>>serializer.data
+{'title': 'Django', 'author': 'allwin', 'email': 'email', 'date': '2020-07-05T16:52:22.973277Z'}
+content = JSONRenderer().render(serializer.data)
+>>> content                                         
+b'{"title":"Django","author":"allwin","email":"email","date":"2020-07-05T16:52:22.973277Z"}'
+>>>serializer = ArticleSerializers(Article.objects.all(),many = True)
+>>> serializer.data
+[OrderedDict([('title', 'Django'), ('author', 'allwin'), ('email', 'email'), ('date', '2020-07-05T16:52:22.973277Z')]),
+ OrderedDict([('title', 'Electon'), ('author', 'allwin'), ('email', 'email'), ('date', '2020-07-05T16:53:15.841831Z')])]
+
+53 Minutes

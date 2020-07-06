@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<head> 
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"> 
+    </script> 
+</head> 
+<body> 
+	<div style="width: 40%; 
+	border: 1px solid black; 
+	background-color: lightcyan; 
+	font-family: Helvetica, sans-serif;"> 
+		<div style="margin: 5%;"> 
+			<h1> 
+				<u>Dictionary Data</u> 
+			</h1> 
+			<h2> 
+				<u>All Data</u> 
+			</h2> 
+			<h4 id='alldata'></h4><br> 
+			<h2> 
+				<u>Neat Data</u> 
+			</h2> 
+			<h4 id='neatdata'></h4> 
+		</div> 
+    </div> 
+    <canvas id="myChart" width="900" height="400"></canvas> 
+</body> 
+</html> 
+<script> 
+	var data = JSON.parse("{{data|escapejs}}"); 
+	var dataNode = document.getElementById('alldata'); 
+	dataNode.innerHTML+="{{data|escapejs}}"; 
+	dataNode = document.getElementById('neatdata'); 
+	for(var x in data){ 
+		dataNode.innerHTML+=x+' : '+data[x]+'<br><br>'; 
+    } 
+    var ctx = document.getElementById("myChart"); 
+    var myChart = new Chart(ctx, { 
+      type: 'bar', 
+      data: { 
+        labels: ["CS", "IT" , "ECE" , "EE", "ME", "BE"], 
+        datasets: [ 
+          { label: '# of students', 
+            data: [105,124,78,91,62,56], 
+            backgroundColor :['rgba(255, 99, 132, 0.2)', 
+                    'rgba(54, 162, 235, 0.2)', 
+                    'rgba(255, 206, 86, 0.2)', 
+                    'rgba(75, 192, 192, 0.2)', 
+                    'rgba(153, 102, 255, 0.2)', 
+                    'rgba(255, 159, 64, 0.2)' 
+    ], 
+      
+    borderColor: [ 
+                    'rgba(255,99,132,1)', 
+                    'rgba(54, 162, 235, 1)', 
+                    'rgba(255, 206, 86, 1)', 
+                    'rgba(75, 192, 192, 1)', 
+                    'rgba(153, 102, 255, 1)', 
+                    'rgba(255, 159, 64, 1)' 
+                ], 
+    borderWidth : 1 
+          } 
+        ] 
+      }, 
+      options: { 
+            scales: { 
+                yAxes: [{ 
+                    ticks: { 
+                        beginAtZero:true 
+                    } 
+                }] 
+            } 
+        } 
+    }); 
+    
+</script>
+
+
+

@@ -1,0 +1,14 @@
+{% extends "cbvapp/base.html" %}
+{% block blockname %}
+
+   <div class="jumbotron">
+    <h1>DETAIL OF SCHOOL</h1>
+    <h2>NAME : {{ school_detail.name}}</h2>
+    <h2>LOCATIOIN : {{school_detail.location}}</h2>
+   </div>
+   {% for students in school_detail.students.all  %}
+   <p>NAME :{{ students.name }}</p>
+   <p> AGE: {{ students.age}}</p>
+   {% endfor %}
+   <p><a href="{% url 'cbvapp:update' pk=school_detail.pk %}" >UPDATE</a></p>
+{% endblock %}

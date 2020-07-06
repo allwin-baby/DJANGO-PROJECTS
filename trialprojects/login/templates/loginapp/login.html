@@ -1,0 +1,13 @@
+{% extends 'loginapp/inherit.html' %}
+{% block blockname %}
+
+<h1>Please Login</h1>
+<form action="{% url 'loginUrl' %}" method="post">   <!-- ERROR:loginapp not registerd in namespace action ----] url  loginapp:loginUrl -->
+{% csrf_token %}
+<label for="username">Username</label>
+<input type="text" name="username" placeholder="USERNAME">
+<label for="password">password</label>
+<input type="password" name="password" >
+<button type="submit">SUBMIT</button></form> 
+{% endblock blockname %}
+
